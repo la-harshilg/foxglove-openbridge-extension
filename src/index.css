@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Noto Sans";
+  src: url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+}
+
+* {
+  font-family: Noto Sans;
+}

@@ -54,27 +54,8 @@ function ExamplePanel({ context }: { context: PanelExtensionContext }): ReactEle
   }, [renderDone]);
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>Welcome to your new extension panel!</h2>
-      <p>
-        Check the{" "}
-        <a href="https://docs.foxglove.dev/docs/visualization/extensions/introduction">
-          documentation
-        </a>{" "}
-        for more details on building extension panels for Foxglove.
-      </p>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", rowGap: "0.2rem" }}>
-        <b style={{ borderBottom: "1px solid" }}>Topic</b>
-        <b style={{ borderBottom: "1px solid" }}>Schema name</b>
-        {(topics ?? []).map((topic) => (
-          <>
-            <div key={topic.name}>{topic.name}</div>
-            <div key={topic.schemaName}>{topic.schemaName}</div>
-          </>
-        ))}
-      </div>
-      <div>{messages?.length}</div>
-    </div>
+    <html data-obc-theme="day">
+    </html>
   );
 }
 
