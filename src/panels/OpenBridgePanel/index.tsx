@@ -1,14 +1,17 @@
-import { AzimuthThruster, Topbar } from "../../components";
-import { useSimulatedData } from "../../hooks";
 import { PanelExtensionContext } from "@foxglove/extension";
 import { useEffect } from "react";
+
+import { AzimuthThruster, Topbar } from "../../components";
+import { useSimulatedData } from "../../hooks";
+import useFoxGloveStimulated from "../../hooks/useFoxGloveStimulated";
 
 interface IOpenBridgePanelProps {
   context: PanelExtensionContext;
 }
 
 export default function OpenBridgePanel({ context }: IOpenBridgePanelProps) {
-  const data = useSimulatedData();
+  const sim = useSimulatedData();
+  const data = useFoxGloveStimulated(context, sim);
 
   useEffect(() => {
     context.setDefaultPanelTitle("Open Bridge Panel");
