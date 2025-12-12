@@ -1,39 +1,125 @@
-# foxglove-openbridge-extension
+# Foxglove OpenBridge Extension
 
-[Foxglove](https://foxglove.dev) allows developers to create [extensions](https://docs.foxglove.dev/docs/visualization/extensions/introduction), or custom code that is loaded and executed inside the Foxglove application. This can be used to add custom panels. Extensions are authored in TypeScript using the `@foxglove/extension` SDK.
+This project is a custom **Foxglove Studio Panel Extension** that integrates **OpenBridge Web Components** (Thruster, Topbar) and binds them to simulated vessel sensor data.
 
-## Develop
+---
 
-Extension development uses the `npm` package manager to install development dependencies and run build scripts.
+## 🚀 Features
 
-To install extension dependencies, run `npm` from the root of the extension package.
+* Foxglove custom panel named **OpenBridge**
+* Integration of OpenBridge Web Components:
 
-```sh
+- `Azimuth Thruster`
+- `Topbar`
+
+* Simulated vessel data (thruster angle, RPM)
+* Clean React + TypeScript structure
+* Installable in Foxglove Studio
+* Follows recommended best practices
+
+---
+
+## 📦 Installation
+
+### 1. Install dependencies
+
+```bash
 npm install
 ```
 
-To build and install the extension into your local Foxglove desktop app, run:
+### 2. Start local install
 
-```sh
+```bash
 npm run local-install
 ```
 
-Open the Foxglove desktop (or `ctrl-R` to refresh if it is already open). Your extension is installed and available within the app.
+### 3. Fix lint and format code
 
-## Package
-
-Extensions are packaged into `.foxe` files. These files contain the metadata (package.json) and the build code for the extension.
-
-Before packaging, make sure to set `name`, `publisher`, `version`, and `description` fields in _package.json_. When ready to distribute the extension, run:
-
-```sh
-npm run package
+```bash
+npm run lint
 ```
 
-This command will package the extension into a `.foxe` file in the local directory.
+Foxglove Studio will detect the extension automatically.
 
-## Publish
+---
 
-You can publish the extension to the public registry or privately for your organization.
+## 🏗 Build Extension
 
-See documentation here: https://docs.foxglove.dev/docs/visualization/extensions/publish/#packaging-your-extension
+To generate the foxglove package:
+
+```bash
+npm run build
+```
+
+The output file will appear in:
+
+```
+dist/extension.js
+```
+
+---
+
+## 🧩 Installing in Foxglove Studio
+
+1. Open **Foxglove Studio**
+2. Go to:
+   **Settings → Extensions → Install Extension**
+3. Select the generated `.foxe` file
+4. Add a new panel
+   → Choose **OpenBridge**
+
+---
+
+## 📡 Simulated Data
+
+The panel uses a custom hook:
+`useSimulatedData()`
+
+Values update every 300ms:
+
+* Thruster angle: oscillating between ±40°
+* RPM: 800–1000 dynamically
+
+These mimic real-time telemetry.
+
+---
+
+## 🛠 Code Structure
+
+```
+src/
+  panels/OpenBridgePanel     → Main panel UI
+  components/
+    AzimuthThruster
+    Topbar
+  hooks/
+    useSimulatedData.ts          → Vessel data simulation
+    useFoxGloveStimulated.ts     → subscribe to topics and data simulation
+  declarations.ts                → declare open-bridge web components   
+  MainPanel.tsx                  → Create root for panel
+  index.ts                       → Entry point and register panel
+```
+
+---
+
+## 📝 Good Practices Followed
+
+* Strong TypeScript typing
+* Small, reusable React components
+* Clean separation of concerns
+* Comments where needed
+* Simple and readable layout
+* Web Components imported only once (globally)
+
+---
+
+## 🧾 License
+
+MIT License
+
+---
+
+## 👤 Author
+
+Harshil Gorasia
+2025

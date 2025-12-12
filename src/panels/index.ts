@@ -1,1 +1,1 @@
-export {default as OpenBridgePanel} from './OpenBridgePanel';
+export { default as OpenBridgePanel } from "./OpenBridgePanel";

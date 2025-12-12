@@ -1,5 +1,6 @@
 import { PanelExtensionContext } from "@foxglove/extension";
 import { createRoot } from "react-dom/client";
+
 import { OpenBridgePanel } from "./panels";
 
 export function initOpenBridgePanel(context: PanelExtensionContext): () => void {
