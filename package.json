@@ -24,6 +24,7 @@
     "@types/react": "18.3.27",
     "@types/react-dom": "18.3.7",
     "create-foxglove-extension": "1.1.1",
+    "css-loader": "^7.1.2",
     "eslint": "9.39.1",
     "prettier": "3.7.4",
     "react": "18.3.1",
@@ -31,6 +32,7 @@
     "typescript": "5.9.3"
   },
   "dependencies": {
-    "@oicl/openbridge-webcomponents": "^0.0.17"
+    "@oicl/openbridge-webcomponents": "^0.0.17",
+    "style-loader": "^4.0.0"
   }
 }

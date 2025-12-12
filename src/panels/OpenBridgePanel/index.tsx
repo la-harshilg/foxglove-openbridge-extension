@@ -1,8 +1,18 @@
 import { AzimuthThruster, Topbar } from "../../components";
 import { useSimulatedData } from "../../hooks";
+import { PanelExtensionContext } from "@foxglove/extension";
+import { useEffect } from "react";
 
-export function OpenBridgePanel() {
+interface IOpenBridgePanelProps {
+  context: PanelExtensionContext;
+}
+
+export default function OpenBridgePanel({ context }: IOpenBridgePanelProps) {
   const data = useSimulatedData();
+
+  useEffect(() => {
+    context.setDefaultPanelTitle("Open Bridge Panel");
+  }, []);
 
   return (
     <div style={{ padding: 16 }}>
