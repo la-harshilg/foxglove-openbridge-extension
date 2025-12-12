@@ -7,6 +7,7 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "main": "./dist/extension.js",
+  "type": "module",
   "keywords": [],
   "scripts": {
     "build": "foxglove-extension build",
@@ -16,7 +17,8 @@
     "lint:fix": "eslint --fix .",
     "local-install": "foxglove-extension install",
     "package": "foxglove-extension package",
-    "pretest": "foxglove-extension pretest"
+    "pretest": "foxglove-extension pretest",
+    "serve": "foxglove-extension serve"
   },
   "devDependencies": {
     "@foxglove/eslint-plugin": "2.1.0",
@@ -26,6 +28,8 @@
     "create-foxglove-extension": "1.1.1",
     "css-loader": "^7.1.2",
     "eslint": "9.39.1",
+    "patch-package": "^8.0.1",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "3.7.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",

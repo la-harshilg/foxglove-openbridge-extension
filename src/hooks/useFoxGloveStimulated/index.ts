@@ -1,44 +1,84 @@
-import { PanelExtensionContext } from "@foxglove/extension";
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+import { PanelExtensionContext, MessageEvent } from "@foxglove/extension";
 import { StimulatedDataType } from "../useStimulatedData";
 
-export default function useFoxgloveOrSim(context: PanelExtensionContext, sim: StimulatedDataType) {
+// safely extract a numeric value from any message shape
+function getNumber(message: unknown, fallback: number): number {
+  if (typeof message === "number") return message;
+
+  if (typeof message === "string") {
+    const num = Number(message);
+    return Number.isFinite(num) ? num : fallback;
+  }
+
+  if (typeof message === "object" && message !== null) {
+    // common patterns: {value}, {data}, {rpm}, {angle}
+    const obj = message as any;
+
+    if (typeof obj.value === "number") return obj.value;
+    if (typeof obj.data === "number") return obj.data;
+    if (typeof obj.angle === "number") return obj.angle;
+    if (typeof obj.rpm === "number") return obj.rpm;
+    if (typeof obj.thrust === "number") return obj.thrust;
+
+    // most ROS Float32 messages: {data: 123}
+    if (obj.data && typeof obj.data === "number") return obj.data;
+  }
+
+  return fallback;
+}
+
+export default function useFoxgloveOrSim(
+  context: PanelExtensionContext,
+  sim: StimulatedDataType
+) {
   const [data, setData] = useState(sim);
 
+  // keeps latest state for onRender without re-binding
+  const dataRef = useRef(sim);
+  dataRef.current = data;
+
   useEffect(() => {
-    try {
-      context.subscribe([{ topic: "/thruster/angle" }, { topic: "/thruster/rpm" }]);
-    } catch (error) {
-      console.error("Subscription error:", error);
-    }
+    // subscribe once
+    context.subscribe([
+      { topic: "/thruster/angle" },
+      { topic: "/thruster/rpm" },
+    ]);
 
-    context.onRender = (state, done) => {
-      const frame = state.currentFrame;
-      if (!frame || !Array.isArray(frame) || frame.length === 0) {
-        done();
-        return;
-      }
+    // stable onRender handler
+    context.onRender = (renderState, done: () => void) => {
+      const frame = renderState.currentFrame as MessageEvent<any>[] | undefined;
+
       if (frame) {
-        const next = { ...data };
+        const next = { ...dataRef.current };
 
-        for (const msg of frame) {
-          switch (msg.topic) {
-            case "/thruster/angle":
-              next.thrustAngle = (msg.message as { value: number }).value ?? next.thrustAngle;
-              break;
-            case "/thruster/rpm":
-              next.thrust = (msg.message as { value: number }).value ?? next.thrust;
-              break;
+        for (const event of frame) {
+          const payload = event.message;
+
+          if (event.topic === "/thruster/angle") {
+            next.thrustAngle = getNumber(payload, next.thrustAngle);
+          }
+
+          if (event.topic === "/thruster/rpm") {
+            next.thrust = getNumber(payload, next.thrust);
           }
         }
 
-        setData(next);
+        // only update state if changed
+        if (
+          next.thrustAngle !== dataRef.current.thrustAngle ||
+          next.thrust !== dataRef.current.thrust
+        ) {
+          setData(next);
+        }
       }
 
       done();
     };
-  }, [context, data]);
+    return () => {
+      context.onRender = undefined;
+    };
+  }, [context]);
 
   return data;
 }

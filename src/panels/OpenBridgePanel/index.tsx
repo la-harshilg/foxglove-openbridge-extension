@@ -3,7 +3,6 @@ import { useEffect } from "react";
 
 import { AzimuthThruster, Topbar } from "../../components";
 import { useSimulatedData } from "../../hooks";
-import useFoxGloveStimulated from "../../hooks/useFoxGloveStimulated";
 
 interface IOpenBridgePanelProps {
   context: PanelExtensionContext;
@@ -11,19 +10,20 @@ interface IOpenBridgePanelProps {
 
 export default function OpenBridgePanel({ context }: IOpenBridgePanelProps) {
   const sim = useSimulatedData();
-  const data = useFoxGloveStimulated(context, sim);
 
   useEffect(() => {
     context.setDefaultPanelTitle("Open Bridge Panel");
   }, []);
 
   return (
-    <div style={{ padding: 16 }}>
-      <Topbar />
+    <html data-obc-theme="day">
+      <div style={{ padding: 16 }} className="obc-component-size-regular">
+        <Topbar />
 
-      <div style={{ display: "flex", gap: 24 }}>
-        <AzimuthThruster angle={data.thrustAngle} thrust={data.thrust} />
+        <div style={{ display: "flex", gap: 24 }} className="obc-component-size-regular">
+          <AzimuthThruster angle={sim.thrustAngle} thrust={sim.thrust} />
+        </div>
       </div>
-    </div>
+    </html>
   );
 }

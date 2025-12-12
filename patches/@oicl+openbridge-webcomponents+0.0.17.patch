@@ -1,0 +1,197 @@
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/components/alert-button/alert-button.js b/node_modules/@oicl/openbridge-webcomponents/dist/components/alert-button/alert-button.js
+index 49ff64f..e0e8892 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/components/alert-button/alert-button.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/components/alert-button/alert-button.js
+@@ -1,13 +1,13 @@
+ import { unsafeCSS, LitElement, html } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+ import compentStyle from "./alert-button.css.js";
+-import "../../icons/icon-alerts";
+-import "../../icons/icon-alerts-active";
+-import "../../icons/icon-notification";
+-import "../../icons/icon-notification-filled";
+-import "../../icons/icon-notification-advice";
+-import "../../icons/icon-notification-advice-active";
+-import { AlertType } from "../../types";
++import "../../icons/icon-alerts.js";
++import "../../icons/icon-alerts-active.js";
++import "../../icons/icon-notification.js";
++import "../../icons/icon-notification-filled.js";
++import "../../icons/icon-notification-advice.js";
++import "../../icons/icon-notification-advice-active.js";
++import { AlertType } from "../../types.js";
+ import { classMap } from "lit/directives/class-map.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/components/breadcrumb/breadcrumb.js b/node_modules/@oicl/openbridge-webcomponents/dist/components/breadcrumb/breadcrumb.js
+index 8b4e8f6..f0a5959 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/components/breadcrumb/breadcrumb.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/components/breadcrumb/breadcrumb.js
+@@ -1,7 +1,7 @@
+ import { unsafeCSS, LitElement, html } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+ import compentStyle from "./breadcrumb.css.js";
+-import "../../icons/icon-chevron-right-google";
++import "../../icons/icon-chevron-right-google.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+ var __decorateClass = (decorators, target, key, kind) => {
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/components/clock/clock.js b/node_modules/@oicl/openbridge-webcomponents/dist/components/clock/clock.js
+index 7c37401..82b86a5 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/components/clock/clock.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/components/clock/clock.js
+@@ -1,6 +1,6 @@
+ import { unsafeCSS, LitElement, html } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+-import "../icon-button/icon-button";
++import "../icon-button/icon-button.js";
+ import compentStyle from "./clock.css.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/components/top-bar/top-bar.js b/node_modules/@oicl/openbridge-webcomponents/dist/components/top-bar/top-bar.js
+index 7f2f3ae..319d244 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/components/top-bar/top-bar.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/components/top-bar/top-bar.js
+@@ -2,17 +2,17 @@ import { unsafeCSS, LitElement, html } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+ import { classMap } from "lit/directives/class-map.js";
+ import compentStyle from "./top-bar.css.js";
+-import "../icon-button/icon-button";
+-import "../clock/clock";
+-import "../divider/divider";
+-import "../breadcrumb/breadcrumb";
+-import "../../icons/icon-menu-iec";
+-import "../../icons/icon-close-google";
+-import "../../icons/icon-arrow-left-google";
+-import "../../icons/icon-arrow-right-google";
+-import "../../icons/icon-palette-day-night-iec";
+-import "../../icons/icon-applications";
+-import "../../icons/icon-more-vertical-google";
++import "../icon-button/icon-button.js";
++import "../clock/clock.js";
++import "../divider/divider.js";
++import "../breadcrumb/breadcrumb.js";
++import "../../icons/icon-menu-iec.js";
++import "../../icons/icon-close-google.js";
++import "../../icons/icon-arrow-left-google.js";
++import "../../icons/icon-arrow-right-google.js";
++import "../../icons/icon-palette-day-night-iec.js";
++import "../../icons/icon-applications.js";
++import "../../icons/icon-more-vertical-google.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+ var __decorateClass = (decorators, target, key, kind) => {
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/azimuth-thruster/azimuth-thruster.js b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/azimuth-thruster/azimuth-thruster.js
+index ba71112..43c406b 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/azimuth-thruster/azimuth-thruster.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/azimuth-thruster/azimuth-thruster.js
+@@ -1,13 +1,13 @@
+ import { unsafeCSS, LitElement, svg } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+-import { InstrumentState } from "../types";
+-import { thruster } from "../thruster/thruster";
+-import "../watch/watch";
++import { InstrumentState } from "../types.js";
++import { thruster } from "../thruster/thruster.js";
++import "../watch/watch.js";
+ import componentStyle from "./azimuth-thruster.css.js";
+ import { ifDefined } from "lit/directives/if-defined.js";
+-import { AdviceState } from "../watch/advice";
+-import { TickmarkType } from "../watch/tickmark";
+-import { PropellerType } from "../thruster/propeller";
++import { AdviceState } from "../watch/advice.js";
++import { TickmarkType } from "../watch/tickmark.js";
++import { PropellerType } from "../thruster/propeller.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+ var __decorateClass = (decorators, target, key, kind) => {
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/advice.js b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/advice.js
+index d91fef9..3387052 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/advice.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/advice.js
+@@ -1,7 +1,7 @@
+ import { svg, nothing } from "lit";
+-import { AdviceType, AdviceState } from "../watch/advice";
+-import { TickmarkStyle } from "../watch/tickmark";
+-import { singleSidedTickmark } from "./tickmark";
++import { AdviceType, AdviceState } from "../watch/advice.js";
++import { TickmarkStyle } from "../watch/tickmark.js";
++import { singleSidedTickmark } from "./tickmark.js";
+ function adviceMask(height, min, max, fill, stroke) {
+   const width = 8;
+   const x1 = 12;
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/thruster.js b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/thruster.js
+index d0aa89a..a36b615 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/thruster.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/thruster.js
+@@ -1,11 +1,11 @@
+ import { css, LitElement, html, svg, nothing } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+-import { InstrumentState } from "../types";
+-import { renderAdvice } from "./advice";
+-import { AdviceState } from "../watch/advice";
+-import { TickmarkStyle } from "../watch/tickmark";
+-import { singleSidedTickmark } from "./tickmark";
+-import { PropellerType, topPropeller, bottomPropeller } from "./propeller";
++import { InstrumentState } from "../types.js";
++import { renderAdvice } from "./advice.js";
++import { AdviceState } from "../watch/advice.js";
++import { TickmarkStyle } from "../watch/tickmark.js";
++import { singleSidedTickmark } from "./tickmark.js";
++import { PropellerType, topPropeller, bottomPropeller } from "./propeller.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+ var __decorateClass = (decorators, target, key, kind) => {
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/tickmark.js b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/tickmark.js
+index dffda9d..6dd4221 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/tickmark.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/thruster/tickmark.js
+@@ -1,5 +1,5 @@
+ import { svg } from "lit";
+-import { tickmarkColor } from "../watch/tickmark";
++import { tickmarkColor } from "../watch/tickmark.js";
+ function singleSidedTickmark(height, value, style) {
+   if (value >= 100) {
+     return null;
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/advice.js b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/advice.js
+index 5aa82df..12c99e4 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/advice.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/advice.js
+@@ -1,5 +1,5 @@
+ import { svg, nothing } from "lit";
+-import { TickmarkStyle, tickmark, TickmarkType } from "./tickmark";
++import { TickmarkStyle, tickmark, TickmarkType } from "./tickmark.js";
+ var AdviceType = /* @__PURE__ */ ((AdviceType2) => {
+   AdviceType2["advice"] = "advice";
+   AdviceType2["caution"] = "caution";
+diff --git a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/watch.js b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/watch.js
+index 19df93b..bbb0239 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/watch.js
++++ b/node_modules/@oicl/openbridge-webcomponents/dist/navigation-instruments/watch/watch.js
+@@ -1,13 +1,13 @@
+ import { unsafeCSS, LitElement, svg, nothing, html } from "lit";
+ import { property, customElement } from "lit/decorators.js";
+-import { circle } from "../../svghelpers";
+-import { roundedArch } from "../../svghelpers/roundedArch";
+-import { InstrumentState } from "../types";
++import {circle} from "../../svghelpers/circle.js";
++import { roundedArch } from "../../svghelpers/roundedArch.js";
++import { InstrumentState } from "../types.js";
+ import compentStyle from "./watch.css.js";
+ import { ResizeController } from "@lit-labs/observers/resize-controller.js";
+-import { renderAdvice } from "./advice";
+-import { tickmark, TickmarkStyle } from "./tickmark";
+-import { renderLabels } from "./label";
++import { renderAdvice } from "./advice.js";
++import { tickmark, TickmarkStyle } from "./tickmark.js";
++import { renderLabels } from "./label.js";
+ var __defProp = Object.defineProperty;
+ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+ var __decorateClass = (decorators, target, key, kind) => {
+diff --git a/node_modules/@oicl/openbridge-webcomponents/src/svghelpers/index.ts b/node_modules/@oicl/openbridge-webcomponents/src/svghelpers/index.ts
+index 8d064ee..811ab61 100644
+--- a/node_modules/@oicl/openbridge-webcomponents/src/svghelpers/index.ts
++++ b/node_modules/@oicl/openbridge-webcomponents/src/svghelpers/index.ts
+@@ -1 +1 @@
+-export {circle, ringOutside} from './circle';
++export {circle, ringOutside} from './circle.js';
